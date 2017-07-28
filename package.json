@@ -19,6 +19,7 @@
 		"babel-preset-stage-0": "^6.24.1",
 		"eslint": "^4.3.0",
 		"eslint-plugin-react": "^7.1.0",
+		"moment": "^2.18.1",
 		"react": "^15.6.1",
 		"react-dom": "^15.6.1",
 		"webpack": "^3.3.0"

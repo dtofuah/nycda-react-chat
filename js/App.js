@@ -1,19 +1,32 @@
 const React = require("react");
+const moment = require("moment");
+
+const MessageList = require("./components/MessageList");
+const MessageForm = require("./components/MessageForm");
 
 class App extends React.Component {
+	state = {
+		messages: [{
+			time: Date.now(),
+			message: "Go ahead and submit your own message below",
+		}],
+	};
+
+	_handleSubmit = (message) => {
+		const newMessages = [
+			...this.state.messages,
+			message,
+		];
+		this.setState({ messages: newMessages });
+	};
+
 	render() {
+		const { messages } = this.state;
+
 		return (
 			<div className="App">
-				<div className="Messages">
-					<div className="Messages-message">
-						<div className="Messages-message-time">1:37pm</div>
-						<div className="Messages-message-text">Test message</div>
-					</div>
-				</div>
-				<form className="MessageForm">
-					<textarea resize={false} className="MessageForm-message"/>
-					<button className="MessageForm-send"/>
-				</form>
+				<MessageList messages={messages} />
+				<MessageForm onSubmit={this._handleSubmit} />
 			</div>
 		);
 	}
